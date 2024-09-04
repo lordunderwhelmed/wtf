@@ -1,12 +1,17 @@
 /* styles.css */
-body {
+
+html, body {
     margin: 0;
-    height: 100vh;
+    height: 100%;
+    overflow: hidden; /* Prevent scrolling */
+}
+
+body {
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #f0f0f0; /* Very light grey */
-    overflow: hidden;
+    overflow: hidden; /* Prevent scrolling on mobile */
 }
 
 .centered-text {
