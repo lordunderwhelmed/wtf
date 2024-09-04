@@ -33,16 +33,17 @@ function changeColorsAndText() {
     }, 1000);
 }
 
-// Add event listeners for hover, touch, and scroll
+// Add event listeners for hover and touch to text element
 textElement.addEventListener('mouseenter', changeColorsAndText);
 textElement.addEventListener('touchstart', changeColorsAndText);
 
-// Prevent scrolling on mobile by capturing scroll and touch events and stopping them
+// Add scroll and touchmove event listeners to the whole document
 document.addEventListener('touchmove', function(event) {
-    event.preventDefault();
+    event.preventDefault();  // Prevent scrolling
+    changeColorsAndText();  // Trigger color and text change
 }, { passive: false });
 
 document.addEventListener('scroll', (event) => {
-    event.preventDefault();
-    changeColorsAndText();
+    event.preventDefault();  // Prevent scrolling
+    changeColorsAndText();  // Trigger color and text change
 }, { passive: false });
