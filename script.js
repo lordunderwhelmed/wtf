@@ -23,24 +23,24 @@ const words = [
     "concrete", "dreamscape", "exodus", "void", "pulse"
 ];
 
-// Function to generate a random pastel color with a high lightness value
+// Function to generate a random pastel color
 function getRandomPastelColor() {
-    const hue = Math.floor(Math.random() * 360);
-    const saturation = 100;
-    const lightness = 85;  // Pastel-like lightness
+    const hue = Math.floor(Math.random() * 360); // Full range of hues
+    const saturation = 70; // Slightly lower saturation for pastel
+    const lightness = 80 + Math.random() * 10; // Lightness between 80% and 90% for pastel effect
     return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
 }
 
 // Function to generate a contrasting pastel color
 function getContrastingPastelColor(baseColor) {
     const baseHue = parseInt(baseColor.match(/hsl\((\d+),/)[1]);
-    const hue = (baseHue + 180) % 360; // Opposite hue for high contrast
-    const saturation = 100;
-    const lightness = 40;  // Lower lightness to increase contrast
-    return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+    const contrastingHue = (baseHue + 150 + Math.random() * 60) % 360; // Shift hue to ensure contrast
+    const saturation = 70; // Keep saturation the same for harmony
+    const lightness = 80 + Math.random() * 10; // Keep within pastel range
+    return `hsl(${contrastingHue}, ${saturation}%, ${lightness}%)`;
 }
 
-// Function to change text and background colors ensuring high contrast
+// Function to change text and background colors ensuring pastel contrast
 function changeColorsAndText() {
     const newColor = getRandomPastelColor();
     const newBgColor = getContrastingPastelColor(newColor);
