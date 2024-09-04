@@ -1,0 +1,19 @@
+/* styles.css */
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0; /* Very light grey */
+    overflow: hidden;
+}
+
+.centered-text {
+    font-size: 3em;
+    font-variant: small-caps;
+    color: #333333; /* Dark grey */
+    cursor: pointer;
+    transition: color 0.5s, background-color 0.5s;
+    text-align: center;
+}
