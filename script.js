@@ -2,7 +2,7 @@
 
 const textElement = document.getElementById('text');
 
-// Array of words to change "fact" to
+// Array of words to change "fact" to, including additional Berlin-related terms
 const words = [
     "truth", "story", "news", "deal", "thing", "event", "moment", "case", 
     "point", "matter", "affair", "incident", "issue", "topic", "subject", 
@@ -11,22 +11,41 @@ const words = [
     "existence", "phenomenon", "circumstance", "context", "detail", "aspect", 
     "element", "feature", "component", "piece", "fragment", "part", "section", 
     "portion", "segment", "fraction", "division", "category", "class", "group", 
-    "type", "floating", "nexus"
+    "type", "floating", "nexus", 
+    // Additional words related to Berlin, Neukölln, art, and nightlife
+    "rave", "graffiti", "underground", "canvas", "installation", "dance", 
+    "beat", "vibe", "darkness", "dawn", "neon", "smoke", "alley", "speakeasy", 
+    "revelry", "bohemian", "raw", "immersive", "subculture", "edge", "bass", 
+    "pulse", "fusion", "freedom", "ecstasy", "grit", "spontaneity", "minimal", 
+    "deep", "electric", "clandestine", "flow", "avant-garde", "threshold", 
+    "frenzy", "decadence", "maze", "psyche", "echo", "solitude", "shadow", 
+    "urge", "trance", "solace", "exhibit", "bustle", "twilight", "desire", 
+    "concrete", "dreamscape", "exodus", "void", "pulse"
 ];
 
-// Function to generate random pastel colors
+// Function to generate a random pastel color with a high lightness value
 function getRandomPastelColor() {
     const hue = Math.floor(Math.random() * 360);
-    const pastelColor = `hsl(${hue}, 100%, 85%)`;
-    return pastelColor;
+    const saturation = 100;
+    const lightness = 85;  // Pastel-like lightness
+    return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
 }
 
-// Function to change text and background colors
+// Function to generate a contrasting pastel color
+function getContrastingPastelColor(baseColor) {
+    const baseHue = parseInt(baseColor.match(/hsl\((\d+),/)[1]);
+    const hue = (baseHue + 180) % 360; // Opposite hue for high contrast
+    const saturation = 100;
+    const lightness = 40;  // Lower lightness to increase contrast
+    return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+}
+
+// Function to change text and background colors ensuring high contrast
 function changeColorsAndText() {
+    const newColor = getRandomPastelColor();
+    const newBgColor = getContrastingPastelColor(newColor);
     const randomIndex = Math.floor(Math.random() * words.length);
     const newWord = words[randomIndex];
-    const newColor = getRandomPastelColor();
-    const newBgColor = getRandomPastelColor();
 
     textElement.style.color = newColor;
     document.body.style.backgroundColor = newBgColor;
